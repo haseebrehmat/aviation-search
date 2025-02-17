@@ -20,17 +20,12 @@ const FlightSearch = ({ onSelectFlight, selectedFlight }) => {
     infants,
     returnDate,
   } = useFilters()
+  const [page, setPage] = useState(1)
 
   const isFiltered = Boolean(
     maxDuration || maxPrice || airlines || sortBy || limit
   )
   let itineraries = useMemo(() => parseItineraries(flights), [flights])
-
-  const itemsPerPage = 5
-  const [page, setPage] = useState(1)
-  const totalPages = Math.ceil(itineraries.length / itemsPerPage)
-
-  const handleChangePage = value => setPage(value)
 
   if (isFiltered) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -131,6 +126,11 @@ const FlightSearch = ({ onSelectFlight, selectedFlight }) => {
       </Typography>
     )
   }
+
+  const itemsPerPage = 5
+  const totalPages = Math.ceil(itineraries.length / itemsPerPage)
+
+  const handleChangePage = (event, value) => setPage(value)
 
   const paginatedItineraries = itineraries.slice(
     (page - 1) * itemsPerPage,
