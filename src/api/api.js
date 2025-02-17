@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const API_BASE_URL = 'https://sky-scrapper.p.rapidapi.com';
-const RAPIDAPI_KEY = 'cf11dcc274msh1f3e9e83625eb87p1819bdjsn12c2cc334267'; // Your key
-const RAPIDAPI_HOST = 'sky-scrapper.p.rapidapi.com';
+const API_BASE_URL = 'https://sky-scrapper.p.rapidapi.com'
+const RAPIDAPI_KEY = 'cf11dcc274msh1f3e9e83625eb87p1819bdjsn12c2cc334267' // Your key
+const RAPIDAPI_HOST = 'sky-scrapper.p.rapidapi.com'
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -10,43 +10,50 @@ const axiosInstance = axios.create({
     'x-rapidapi-key': RAPIDAPI_KEY,
     'x-rapidapi-host': RAPIDAPI_HOST,
   },
-});
+})
 
 export const getLocale = async () => {
   try {
-    const response = await axiosInstance.get('/api/v1/getLocale');
-    return response.data;
+    const response = await axiosInstance.get('/api/v1/getLocale')
+    return response.data
   } catch (error) {
-    console.error('Error fetching locale:', error);
-    throw error;
+    console.error('Error fetching locale:', error)
+    throw error
   }
-};
+}
 
 export const searchAirport = async (query, locale = 'en-US') => {
   try {
     const response = await axiosInstance.get('/api/v1/flights/searchAirport', {
       params: { query, locale },
-    });
-    return response.data;
+    })
+    return response.data
   } catch (error) {
-    console.error('Error searching airport:', error);
-    throw error;
+    console.error('Error searching airport:', error)
+    throw error
   }
-};
+}
 
 export const getNearByAirports = async (lat, lng, locale = 'en-US') => {
   try {
-    const response = await axiosInstance.get('/api/v1/flights/getNearByAirports', {
-      params: { lat, lng, locale },
-    });
-    return response.data;
+    const response = await axiosInstance.get(
+      '/api/v1/flights/getNearByAirports',
+      {
+        params: { lat, lng, locale },
+      }
+    )
+    return response.data
   } catch (error) {
-    console.error('Error getting nearby airports:', error);
-    throw error;
+    console.error('Error getting nearby airports:', error)
+    throw error
   }
-};
+}
 
-export const searchFlightsComplete = async (origin, destination, additionalParams = {}) => {
+export const searchFlightsComplete = async (
+  origin,
+  destination,
+  additionalParams = {}
+) => {
   try {
     const params = {
       originSkyId: origin.skyId,
@@ -68,17 +75,23 @@ export const searchFlightsComplete = async (origin, destination, additionalParam
       maxDuration: additionalParams.maxDuration,
       maxPrice: additionalParams.maxPrice,
       airlines: additionalParams.airlines,
-    };
+    }
 
-    const response = await axiosInstance.get('/api/v2/flights/searchFlightsComplete', { params });
-    const data = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
-    console.log("Parsed API response:", data);
-    return data;
+    const response = await axiosInstance.get(
+      '/api/v2/flights/searchFlightsComplete',
+      { params }
+    )
+    const data =
+      typeof response.data === 'string'
+        ? JSON.parse(response.data)
+        : response.data
+    console.log('Parsed API response:', data)
+    return data
   } catch (error) {
-    console.error('Error searching flights:', error);
-    throw error;
+    console.error('Error searching flights:', error)
+    throw error
   }
-};
+}
 
 export const getFlightDetails = async (
   legs,
@@ -94,11 +107,14 @@ export const getFlightDetails = async (
       cabinClass,
       currency,
       locale,
-    };
-    const response = await axiosInstance.get('/api/v1/flights/getFlightDetails', { params });
-    return response.data;
+    }
+    const response = await axiosInstance.get(
+      '/api/v1/flights/getFlightDetails',
+      { params }
+    )
+    return response.data
   } catch (error) {
-    console.error('Error getting flight details:', error);
-    throw error;
+    console.error('Error getting flight details:', error)
+    throw error
   }
-};
+}
