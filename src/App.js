@@ -1,24 +1,36 @@
 // App.js
-import React, { useState } from 'react';
-import { Container, Box } from '@mui/material';
-import SearchForm from './components/SearchForm';
-import FlightSearch from './components/FlightSearch';
-import FlightMap from './components/FlightMap';
+import LocalAirportIcon from '@mui/icons-material/LocalAirport'
+import { Container, Box } from '@mui/material'
+import React, { useState } from 'react'
+import useFlights from 'store/useFlights'
+
+import FlightMap from './components/FlightMap'
+import FlightSearch from './components/FlightSearch'
+import SearchForm from './components/SearchForm'
 
 function App() {
-  const [results, setResults] = useState(null);
-  const [selectedFlight, setSelectedFlight] = useState(null);
-
-  const handleResults = (data) => {
-    console.log("Search results:", data);
-    setResults(data);
-    setSelectedFlight(null); // reset selected flight on new search
-  };
+  const [selectedFlight, setSelectedFlight] = useState(null)
+  const { flights } = useFlights()
 
   return (
     <Container sx={{ my: 4 }}>
-      <SearchForm onResults={handleResults} />
-      {results && results.flights && (
+      <Box
+        sx={{
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          color: 'primary.main',
+        }}
+      >
+        <LocalAirportIcon
+          sx={{ fontSize: 100, color: 'primary.main', mb: 4 }}
+        />
+        <h1>Aviation Search</h1>
+      </Box>
+      <SearchForm />
+      {flights ? (
         <>
           {selectedFlight && (
             <Box sx={{ mt: 4 }}>
@@ -27,16 +39,14 @@ function App() {
           )}
           <Box sx={{ mt: 4 }}>
             <FlightSearch
-              flights={results.flights}
-              searchParams={results.searchParams}
               onSelectFlight={setSelectedFlight}
               selectedFlight={selectedFlight}
             />
           </Box>
         </>
-      )}
+      ) : null}
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App
