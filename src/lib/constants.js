@@ -1,0 +1,16 @@
+export const FILTERS_DEFAULTS = {
+  originQuery: '',
+  destinationQuery: '',
+  date: '',
+  returnDate: '',
+  cabinClass: 'economy',
+  adults: 1,
+  childrens: 0,
+  infants: 0,
+  sortBy: 'best',
+  limit: '',
+  currency: 'USD',
+  maxDuration: '',
+  maxPrice: '',
+  airlines: '',
+}
