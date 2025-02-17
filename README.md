@@ -83,7 +83,7 @@ This folder manages state with React hooks for flights and filters.
 ## 📦 Installation
 
 ```sh
-npm install◊
+npm install
 ```
 
 ## ▶️ Running the App
@@ -100,5 +100,3 @@ This project uses ESLint and Prettier for code formatting and linting.
 npm run lint
 npm run format
 ```
-
-Happy coding! 🚀

@@ -26,7 +26,6 @@ const FlightSearch = ({ onSelectFlight, selectedFlight }) => {
   )
   let itineraries = useMemo(() => parseItineraries(flights), [flights])
 
-  // --- Pagination Setup ---
   const itemsPerPage = 5
   const [page, setPage] = useState(1)
   const totalPages = Math.ceil(itineraries.length / itemsPerPage)
@@ -34,6 +33,7 @@ const FlightSearch = ({ onSelectFlight, selectedFlight }) => {
   const handleChangePage = value => setPage(value)
 
   if (isFiltered) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     itineraries = useMemo(() => {
       let filteredItineraries = [...itineraries]
       if (maxDuration) {

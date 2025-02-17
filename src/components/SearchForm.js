@@ -1,9 +1,8 @@
 import { Box, Button, CircularProgress } from '@mui/material'
+import { searchFlightsComplete } from 'api/api'
 import React, { useState } from 'react'
 import useFilters from 'store/useFilters'
 import useFlights from 'store/useFlights'
-
-import { searchFlightsComplete, searchAirport } from '../api/api'
 
 import Advanced from './Filters/Advanced'
 import Basic from './Filters/Basic'
@@ -17,10 +16,6 @@ const SearchForm = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
-    console.log(
-      'Search form submitted with filters:',
-      !airports.origin || !airports.destination
-    )
     try {
       if (airports?.origin && airports?.destination) {
         const flightsResponse = await searchFlightsComplete(

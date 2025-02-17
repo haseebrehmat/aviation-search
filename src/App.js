@@ -1,4 +1,3 @@
-// App.js
 import LocalAirportIcon from '@mui/icons-material/LocalAirport'
 import { Container, Box } from '@mui/material'
 import React, { useState } from 'react'

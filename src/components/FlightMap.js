@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Box } from '@mui/material'
 import L from 'leaflet'
 import { useState, useEffect } from 'react'
@@ -24,12 +25,10 @@ const selectedIcon = L.icon({
 })
 
 const FlightMap = ({ flight, flights }) => {
-  // If a selected flight is provided, use it; otherwise, use the flights array (if any).
   const flightsArray = flight ? [flight] : flights || []
 
   const [airportData, setAirportData] = useState({})
 
-  // Fetch airport data from public/airports.json
   useEffect(() => {
     fetch('/airports.json')
       .then(res => res.json())

@@ -70,7 +70,6 @@ export const searchFlightsComplete = async (
       limit: additionalParams.limit,
       carriersIds: additionalParams.carriersIds,
       currency: additionalParams.currency || 'USD',
-      // The following new filters are sent to the API (if needed)
       maxStops: additionalParams.maxStops,
       maxDuration: additionalParams.maxDuration,
       maxPrice: additionalParams.maxPrice,
@@ -85,7 +84,6 @@ export const searchFlightsComplete = async (
       typeof response.data === 'string'
         ? JSON.parse(response.data)
         : response.data
-    console.log('Parsed API response:', data)
     return data
   } catch (error) {
     console.error('Error searching flights:', error)

@@ -1,4 +1,3 @@
-// FlightCard.js
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import FlightLandIcon from '@mui/icons-material/FlightLand'
@@ -32,7 +31,7 @@ const FlightCard = ({ flight, searchParams, onClick, selected }) => {
     })
 
   const handleExpandClick = e => {
-    e.stopPropagation() // prevent the click from propagating to the card onClick
+    e.stopPropagation()
     setExpanded(!expanded)
   }
 
@@ -52,7 +51,7 @@ const FlightCard = ({ flight, searchParams, onClick, selected }) => {
         boxShadow: 3,
         borderRadius: 2,
         cursor: 'pointer',
-        border: selected ? '2px solid red' : 'none', // Highlight if selected
+        border: selected ? '2px solid red' : 'none',
         backgroundColor: selected ? '#fff0f0' : 'inherit',
       }}
     >
