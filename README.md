@@ -3,10 +3,10 @@
 Welcome to the **Aviation Search App**! This project allows users to search for flights, filter results, and view flight details in an intuitive interface.
 
 ## Demo
-<video width="600" controls>
-  <source src="/public/demo.mov" type="video/mp4">
-  📽️ [Watch Demo Video](./public/demo.mov)
-</video>
+  📽️ [Watch Demo Video](https://www.loom.com/share/de305179da5944c0b52bd15140c1675e?sid=c31ecf7e-c212-4e6a-8c21-a47b16df9b9d)
+
+  <iframe src="https://www.loom.com/share/de305179da5944c0b52bd15140c1675e?sid=c31ecf7e-c212-4e6a-8c21-a47b16df9b9d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 
 ## 🚀 Features
 
